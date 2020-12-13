@@ -1,0 +1,22 @@
+.single-issue-container {
+  padding: 5px;
+}
+
+.single-issue-container .single-issue-main {  
+  display: flex;
+  flex-direction: row;
+}
+
+.issue-data {
+  width: 600px;
+}
+
+.actions-container {
+  width: 400px;
+}
+
+.comment {
+  width: 800px;
+  padding: 5px;
+  margin-top: 10px;
+}
