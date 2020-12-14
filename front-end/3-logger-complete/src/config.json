@@ -1,0 +1,26 @@
+{
+  "appConfig": {
+    "backEndUrl" : "http://localhost:5000",
+    "logging": {
+      "appenders": [
+        { "name": "BrowserLogAppender", "type": "ConsoleAppender" },
+        { "name": "BufferRestAppender", "type": "RestAppender", "settings": { "batchSize": 10 } },
+        { "name": "InstantRestAppender", "type": "RestAppender", "settings": { "batchSize": 0 } }
+      ],
+      "loggers": [
+        { 
+          "name": "default",
+          "appenders": [ "BrowserLogAppender" ]
+        },
+        { 
+          "name": "Issue.Comments",
+          "appenders": [ "InstantRestAppender" ]
+        },
+        { 
+          "name": "Issue",
+          "appenders": [ "BrowserLogAppender", "BufferRestAppender" ]
+        }
+      ]
+    }
+  }
+}

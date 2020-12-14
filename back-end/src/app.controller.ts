@@ -16,8 +16,11 @@ interface IUserToken {
 }
 
 interface ILog {
+  level: string,
+  date: Date,
   text: string;
   data?: string;
+  context?: string;
 }
 
 interface IAddCommentLog {
@@ -83,9 +86,12 @@ export class AppController {
   }
 
   @Post("log")
-  postLog(@Body() request: ILog, @Headers("user-token") userTokenHeader) {
+  postLog(@Body() request: Array<ILog>, @Headers("user-token") userTokenHeader) {
     const userToken: IUserToken = JSON.parse(userTokenHeader)
-    console.log(`Log : ${JSON.stringify(request)}`)
+    console.log("********* log received ***********")
+    request.forEach(log => {
+      console.log(`${log.level} - ${log.date} - ${log.text}`)
+    })
   }
 
   @Post("logs")

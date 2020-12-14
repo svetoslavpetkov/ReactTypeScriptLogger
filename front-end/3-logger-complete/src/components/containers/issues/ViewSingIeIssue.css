@@ -1,0 +1,53 @@
+.single-issue-container {
+  padding: 5px;
+}
+
+.single-issue-container .single-issue-main {  
+  display: flex;
+  flex-direction: row;
+}
+
+.issue-data {
+  width: 600px;
+}
+
+.actions-container {
+  margin-left: 50px;
+  width: 400px;
+}
+
+.actions-list div{
+  margin-top: 5px;
+}
+
+.actions-list div button {
+  width: 200px;
+}
+
+.comment {
+  width: 830px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+
+.add-comment {
+  padding: 10px;
+  width: 600px;
+}
+
+.add-comment-input {
+  margin-top: 5px;
+}
+
+.add-comment-input textarea {
+  width: 500px;
+}
+
+.add-comment-actions {
+  margin-top: 5px;
+}
+
+.add-comment-actions button {
+  margin-right: 10px;
+}
