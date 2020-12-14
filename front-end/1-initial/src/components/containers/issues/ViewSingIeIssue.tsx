@@ -123,8 +123,7 @@ export class ViewSingIeIssue extends React.Component<IViewSingIeIssueProps, IVie
   }
 
 
-  renderActions(issue: IIssueWithActions, actionIsExecuting: boolean) {
-    console.log("this.state.issue.transitionStatuses", issue.transitionStatuses)
+  renderActions(issue: IIssueWithActions, actionIsExecuting: boolean) {    
     return (            
       <div className="actions-list">
         <div>
@@ -156,9 +155,7 @@ export class ViewSingIeIssue extends React.Component<IViewSingIeIssueProps, IVie
   renderComments() {
     if (this.state.comments.length === 0) {
       return (<h4>No comments</h4>)
-    }
-
-    console.log("renderComments", this.state.comments);
+    }    
 
     return this.state.comments.map(c => (
       <Paper key={c.id} className="comment">
