@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:3000/
+@admin = { username: "admin", Role: "Admin" }
+
+###
+POST {{baseUrl}}auth HTTP/1.1
+content-type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+###
+
+GET {{baseUrl}}issue HTTP/1.1
+content-type: application/json
+
+{
+    "userToken": { "username": "admin", "Role": "Admin" }
+}
