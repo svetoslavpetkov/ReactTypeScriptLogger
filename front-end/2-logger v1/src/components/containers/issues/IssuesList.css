@@ -1,0 +1,16 @@
+.issues-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
+}
+
+.issues-container .issue {
+  margin: 10px;
+  padding: 5px;
+  width: 400px;
+}
+
+.issues-container .issue .issue-container .issue-description {
+  height: 200px;
+  overflow-y: hidden;
+}
