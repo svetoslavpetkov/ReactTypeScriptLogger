@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Headers, HttpCode, Param, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Headers, HttpCode, Param, Patch, Post, Req } from '@nestjs/common';
 import { request, Request } from 'express';
 import { AppService } from './app.service';
-import { UserRole } from './persistence/abstraction';
+import { IssueStatus, UserRole } from './persistence/abstraction';
 import { PersistenceService } from './persistence/persistence.service';
 
 interface IUserAuthRequest {
@@ -54,6 +54,12 @@ export class AppController {
     const userToken: IUserToken = JSON.parse(userTokenHeader)
     
     return this.persistence.getIssue(id);
+  }
+
+  @Patch("issue/:id/status")
+  async changeStatus(@Headers("user-token") userTokenHeader, @Param("id") id: string, @Body() input: { status: IssueStatus }) {
+    const userToken: IUserToken = JSON.parse(userTokenHeader)        
+    await this.persistence.changeIssueStatus(id, input.status);
   }
 
   @Get("issue/:id/comments")

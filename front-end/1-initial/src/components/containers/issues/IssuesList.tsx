@@ -35,7 +35,7 @@ export class IssuesList extends React.Component<IIssuesListProps, IIssuesListSta
     this.context
       .get<IIssueService>(AppService.IssueService)
       .listIssues()
-      .then(issues => {
+      .then(issues => {       
         this.setState({ issues, issuesAreLoading: false })        
       })
   }
@@ -45,8 +45,8 @@ export class IssuesList extends React.Component<IIssuesListProps, IIssuesListSta
     {this.state.issuesAreLoading && <Loader text="Loading issues" />}
     <div className="issues-container">
       {!this.state.issuesAreLoading && this.state.issues.map(i => (
-        <div className="issue">
-          <IssueItem showLinks key={i.id} {...i} />
+        <div className="issue" key={i.id}>
+          <IssueItem showLinks  {...i} />
         </div>))}
     </div>
     </>

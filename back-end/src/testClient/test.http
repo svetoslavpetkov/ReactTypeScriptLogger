@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000/
+@baseUrl = http://localhost:5000/
 @admin = { username: "admin", Role: "Admin" }
 
 ###
@@ -14,7 +14,4 @@ content-type: application/json
 
 GET {{baseUrl}}issue HTTP/1.1
 content-type: application/json
-
-{
-    "userToken": { "username": "admin", "Role": "Admin" }
-}
+user-token: { "username": "admin", "Role": "Admin" }

@@ -75,7 +75,11 @@ export interface IIssueService {
 
   listIssues(): Promise<Array<IIssue>>
 
-  getIssue(id: string): Promise<IIssue>
+  getIssue(id: string): Promise<IIssueWithActions>
+
+  changeStatus(issueId: string, status: IssueStatus): Promise<void>
 
   getComments(issueId: string): Promise<Array<IComment>>
+
+  addComment(input : {issueId: string, text: string}): Promise<void>
 }

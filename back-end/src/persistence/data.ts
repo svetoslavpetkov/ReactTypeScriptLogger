@@ -899,10 +899,12 @@ export function getUsers(): Array<IUser> {
 
 export function getIssues(): Array<IIssue> {
   return issues.map( i => {
+    const comments = i.comments.map(c => ({ ...c, createdDate: new Date(c.createdDate) }))
+    comments.sort((a,b) => b.createdDate.getTime() - a.createdDate.getTime())
     return  {
       ...i,
       createdDate: new Date(i.createdDate),
-      comments: i.comments.map(c => ({ ...c, createdDate: new Date(c.createdDate) }))
+      comments
     };
   })
 }

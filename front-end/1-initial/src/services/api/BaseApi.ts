@@ -47,8 +47,10 @@ export abstract class BaseApi extends BaseService {
       .request(input)
       .then(r => {
         if(r.data) {
-          let result = Object.assign({}, r.data);
-          ParserUtil.prepareObject(result)
+          let result = Array.isArray(r.data) 
+            ? r.data.map(i => Object.assign({}, i))
+            : Object.assign({}, r.data);          
+          ParserUtil.prepareObject(result)          
           return result
         } else {
           return r.data
@@ -68,6 +70,15 @@ export abstract class BaseApi extends BaseService {
     return this.do({
       url,
       method: "POST",
+      payload,
+      anonymous
+    })
+  }
+
+  protected patch<T>(url: string, payload: IIndexer , anonymous: boolean = false) : Promise<T> {
+    return this.do({
+      url,
+      method: "PATCH",
       payload,
       anonymous
     })

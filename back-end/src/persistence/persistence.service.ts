@@ -16,13 +16,17 @@ export class PersistenceService {
 
   getIssue = (id: string) => PromiseUtil.return(this.issues.find(i => i.id === id))
 
+  saveIssue(issue: IIssue) {
+    this.issues = this.issues.map(i => i.id === issue.id ? issue : i)
+  }
+
   changeIssueStatus = (id: string, status: IssueStatus) => this.getIssue(id).then(i => i.status = status)
 
   async addComment (input: { issueId: string, username: string, text: string }): Promise<{ id: string }> {    
     await PromiseUtil.wait();
     const id = uuidV4();
     const issue = this.issues.find(i => i.id === input.issueId);
-    issue.comments.push({ 
+    issue.comments.unshift({ 
       id,
       createdDate: new Date(),
       creator: input.username,

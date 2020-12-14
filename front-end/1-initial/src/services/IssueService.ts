@@ -27,12 +27,17 @@ export class IssueService extends BaseApi implements IIssueService {
     }
 
   }
+
+  async changeStatus(issueId: string, status: IssueStatus): Promise<void> {
+    //issue/:id/status
+    return this.patch(`/issue/${issueId}/status`, { status })
+  }
   
   getComments(issueId: string): Promise<Array<IComment>> {
     return this.get(`/issue/${issueId}/comments`)
   }
 
-  addComment(input : {issueId: string, text: string}) {
+  addComment(input : {issueId: string, text: string}): Promise<void> {
     return this.post(`/issue/${input.issueId}/comments`, { text: input.text })
   }
 }
