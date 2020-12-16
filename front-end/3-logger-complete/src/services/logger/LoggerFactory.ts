@@ -35,13 +35,31 @@ export class LoggerFactory extends BaseService implements ILoggerFactory {
 
   create(name:string): ILogger {
 
-    const existing = this.instances.find(a => a.name === name);
+    let existing = this.instances.find(a => a.name === name);
+    const nameSections = this.getModules(name)
+
+    while(!existing && nameSections.length > 0) {
+      const currentName = nameSections.join(".")
+      existing = this.instances.find(a => a.name === currentName);
+      nameSections.pop();
+    }
+
     if(!existing) {
       const defaultLogger = Guard.ensure(this.instances.find(a => a.name === "default"), "No default logger provider");
       return defaultLogger.logger;
     } else {
       return existing.logger;
     }    
+  }
+
+  getModules(name: string): Array<string> {
+    if (name.indexOf(".") < 0) {
+      return [name]
+    }
+
+    const result = name.split(".");
+
+    return result.filter(a => a.length > 0)
   }
 
   getAppender(config: IAppenderConfig) {

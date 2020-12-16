@@ -13,12 +13,12 @@
           "appenders": [ "BrowserLogAppender" ]
         },
         { 
-          "name": "Issue.Comments",
-          "appenders": [ "InstantRestAppender" ]
-        },
-        { 
           "name": "Issue",
           "appenders": [ "BrowserLogAppender", "BufferRestAppender" ]
+        },
+        { 
+          "name": "Issue.Comments",
+          "appenders": [ "InstantRestAppender" ]
         }
       ]
     }
